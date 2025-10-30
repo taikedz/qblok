@@ -47,6 +47,15 @@ $> ip a | qblok -g loop | qblok -i 4 -G 'inet6' -S "---"
        valid_lft forever preferred_lft forever
 ```
 
-## Block limits
+## Rules
 
-By default, each line starting with the specified indent starts a new block, except if `--run-in` specified, un which case a run of lines with the same indent, plus sub-sections on further indents, creates a single block.
+* Input
+    * Input is done through stdin exclusively.
+
+* Block limits
+    * By default, each line starting with the specified indent starts a new block
+    * except if `--run-in` specified, un which case a run of lines with the same indent, plus sub-sections on further indents, creates a single block.
+
+* Output
+    * Ouput is simply the raw data
+    * Except if `--separator` is specified in which case the separator is inserted between blocks
