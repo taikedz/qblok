@@ -55,7 +55,49 @@ $> ip a | qblok -g loop | qblok -i 4 -G 'inet6' -S "---"
 * Block limits
     * By default, each line starting with the specified indent starts a new block
     * except if `--run-in` specified, un which case a run of lines with the same indent, plus sub-sections on further indents, creates a single block.
+    * See "Block Limits" below
 
 * Output
     * Ouput is simply the raw data
     * Except if `--separator` is specified in which case the separator is inserted between blocks
+
+
+### Block Limits
+
+By default, any line starting with the specified indent level starts a new block
+
+Given the example data
+
+```
+First line
+Second line
+Third line
+  Fourth line
+Fifth line
+```
+
+
+The blocks produced will be such, as four blocks
+
+```
+First line
+
+Second line
+
+Third line
+  Fourth line
+
+Fifth line
+```
+
+By using the `--run-in` flag, all lines with the same top indent will be grouped - the example produces two blocks
+
+```
+First line
+Second line
+Third line
+  Fourth line
+
+Fifth line
+```
+
